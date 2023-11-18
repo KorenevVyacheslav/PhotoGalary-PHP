@@ -76,7 +76,7 @@
                                         <span aria-hidden="true">&times;</span>
                                         </button>
                                     </form>
-                                <?endif; ?>
+                                <?php endif; ?>
                                     <form action="/photopage" method="post">
                                         <a href="javascript:;" onclick="parentNode.submit();">
                                         <img src="images/<?php echo $file ?>" class="img-thumbnail" >               

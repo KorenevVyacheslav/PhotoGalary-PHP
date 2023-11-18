@@ -32,17 +32,16 @@ class Route
 		//		include MODELS.$model_file;
 		//	}
 
-		$controller_name = 'Controller_'.$controller_name;  		//Controller_Main 
+		$controller_name = 'Controller_'.ucfirst (strtolower($controller_name));  		//Controller_Main 
+
 		$action_name = 'action_'.$action_name;						//action_index
 
 		// подключаем файл с классом контроллера
-		$controller_file = strtolower($controller_name).'.php';		//controller_main.php
-
+		$controller_file = $controller_name.'.php';					//Controller_Main.php
 		$controller_path = CONTROLLERS.$controller_file;
 
-
 		if (file_exists($controller_path))	{
-			include CONTROLLERS.$controller_file;					//   app/controllers/controller_main.php
+			include CONTROLLERS.$controller_file;					//   подключаем файл контроллера
 		}
 		else   {	
 			Route::ErrorPage();			
@@ -54,7 +53,7 @@ class Route
 		$action = $action_name;										
 		
 		if (method_exists($controller, $action))	{
-					$controller->$action(); 				// вызываем действие контроллера
+					$controller->$action(); 						// вызываем действие контроллера
 		}				
 		else   {
 			Route::ErrorPage();						
@@ -64,7 +63,7 @@ class Route
 
 	public static function ErrorPage()
 	{
-		require_once CONTROLLERS.'controller_404.php';
+		require_once CONTROLLERS.'Controller_404.php';												
 		$controller = new Controller_404; 
 		$controller->action_index();
 

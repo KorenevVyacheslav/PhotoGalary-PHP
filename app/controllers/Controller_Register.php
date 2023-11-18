@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 class Controller_Register extends Controller
 {
